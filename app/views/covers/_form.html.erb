@@ -1,0 +1,32 @@
+<% @cover.tgs.build %>
+<%= form_for (@cover) do |cover_form| %>
+  <% if @cover.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@cover.errors.count, "error") %> prohibited this cover from being saved:</h2>
+
+      <ul>
+      <% @cover.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= cover_form.label :name %><br />
+    <%= cover_form.text_field :name %>
+  </div>
+  
+  <div class="field">
+    <%= cover_form.label :description %><br />
+    <%= cover_form.text_area :description %>
+  </div>
+
+<h2>Tags</h2>
+<%= render :partial => 'tgs/form',
+:locals => {:form => cover_form} %>
+
+  <div class="actions">
+    <%= cover_form.submit %>
+  </div>
+<% end %>

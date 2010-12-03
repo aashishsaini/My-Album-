@@ -1,0 +1,26 @@
+<i><b><ul><h1> List of Your Album  </h1></ul></b></i>
+
+<table>
+  <tr>
+    <th>Name</th>
+    
+    <th>Description</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @covers.each do |cover| %>
+  <tr>
+    <td><b><%= (cover.name).capitalize %></b></td>
+    <td><%= cover.description %></td>
+    <td><%= link_to 'Show', cover %></td>
+    <td><%= link_to 'Edit', edit_cover_path(cover) %></td>
+    <td><%= link_to 'Destroy', cover, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'Add New Album Cover', new_cover_path %>

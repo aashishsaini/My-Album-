@@ -1,0 +1,62 @@
+<p id="notice"><%= notice %></p>
+<p>
+<h1><b> <i> Now add photos to your album </b></i></h1>
+</p>
+
+
+<p>
+<h1><b> Album Name: <%= (@cover.name).capitalize %></b></h1>
+</p>
+
+
+<p>
+<b>Tags:</b>
+<%= join_tgs(@cover) %>
+</p>
+<%= link_to 'Add or Delete Tag', edit_cover_path(@cover) %>
+
+<h2>Your Snaps</h2>
+<table>
+<% @cover.photos.each do |photo| %>
+<td>
+
+  <p>
+    <b>Name:</b>
+     <%= (photo.name).capitalize %>
+  </p>
+
+
+
+
+<div class ="image" height= 300px width = 200px >  
+<p>
+
+<% if photo.image_url.exists? then %>
+	<%= image_tag photo.image_url.url(:small) %>
+<% end %>
+
+
+  </p>
+</div>
+
+
+<p>
+  <%= link_to 'Destroy Photo', [photo.cover, photo],
+               :confirm => 'Are you sure?',
+               :method => :delete %>
+</p>
+
+
+</td>
+
+<% end %>
+</table>
+
+
+<h2>Add Photos:</h2>
+<%= render "photos/form" %>
+
+
+
+<%= link_to 'Edit', edit_cover_path(@cover) %> |
+<%= link_to 'Back', covers_path %>

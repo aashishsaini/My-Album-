@@ -1,0 +1,16 @@
+<%= form.fields_for :tggs do |tgg_form| %>
+  <div class="field">
+     <%= tgg_form.label :name, 'Tag:' %>
+     <%= tgg_form.text_field :name %>
+  </div>
+  <% unless tgg_form.object.nil? || tgg_form.object.new_record? %>
+     <div class="field">
+       <%= tgg_form.label :_destroy, 'Remove:' %>
+       <%= tgg_form.check_box :_destroy %>
+     </div>
+
+
+  <% end %>
+<%= tgg_form.submit %>
+<% end %>
+
